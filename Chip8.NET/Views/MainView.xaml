@@ -1,0 +1,220 @@
+﻿<Window x:Class="Chip8.NET.Views.MainView"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF"
+		Title="MainView" Height="Auto" Width="1000">
+
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="_File">
+				<MenuItem Header="_New" />
+				<MenuItem Header="_Open" />
+				<MenuItem Header="_Save" />
+				<Separator />
+				<MenuItem Header="_Exit" />
+			</MenuItem>
+		</Menu>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0" Margin="10">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<GroupBox Grid.Row="0" Header="Game">
+					<sharpGL:OpenGLControl x:Name="OpenGLControl" Height="320" Width="640"/>
+				</GroupBox>
+
+				<GroupBox Grid.Row="1" Header="Data" Width="640">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
+							<Run Text="PC: "/>
+							<Run Text="{Binding PC}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+							<Run Text="I: "/>
+							<Run Text="{Binding I}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">
+							<Run Text="DT: "/>
+							<Run Text="{Binding DT}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center">
+							<Run Text="ST: "/>
+							<Run Text="{Binding ST}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+							<Run Text="V0: "/>
+							<Run Text="{Binding Registers[0].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+							<Run Text="V1: "/>
+							<Run Text="{Binding Registers[1].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
+							<Run Text="V2: "/>
+							<Run Text="{Binding Registers[2].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="1" Grid.Row="3" VerticalAlignment="Center">
+							<Run Text="V3: "/>
+							<Run Text="{Binding Registers[3].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="2" Grid.Row="0" VerticalAlignment="Center">
+							<Run Text="V4: "/>
+							<Run Text="{Binding Registers[4].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
+							<Run Text="V5: "/>
+							<Run Text="{Binding Registers[5].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="2" Grid.Row="2" VerticalAlignment="Center">
+							<Run Text="V6: "/>
+							<Run Text="{Binding Registers[6].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="2" Grid.Row="3" VerticalAlignment="Center">
+							<Run Text="V7: "/>
+							<Run Text="{Binding Registers[7].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="3" Grid.Row="0" VerticalAlignment="Center">
+							<Run Text="V8: "/>
+							<Run Text="{Binding Registers[8].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="3" Grid.Row="1" VerticalAlignment="Center">
+							<Run Text="V9: "/>
+							<Run Text="{Binding Registers[9].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="3" Grid.Row="2" VerticalAlignment="Center">
+							<Run Text="VA: "/>
+							<Run Text="{Binding Registers[10].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="3" Grid.Row="3" VerticalAlignment="Center">
+							<Run Text="VB: "/>
+							<Run Text="{Binding Registers[11].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="4" Grid.Row="0" VerticalAlignment="Center">
+							<Run Text="VC: "/>
+							<Run Text="{Binding Registers[12].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="4" Grid.Row="1" VerticalAlignment="Center">
+							<Run Text="VD: "/>
+							<Run Text="{Binding Registers[13].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="4" Grid.Row="2" VerticalAlignment="Center">
+							<Run Text="VE: "/>
+							<Run Text="{Binding Registers[14].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Grid.Column="4" Grid.Row="3" VerticalAlignment="Center">
+							<Run Text="VF: "/>
+							<Run Text="{Binding Registers[15].Reg}"/>
+						</TextBlock>
+
+						<TextBlock Visibility="Collapsed" Grid.Column="5" Grid.Row="0" Grid.ColumnSpan="2" Text="Stack" VerticalAlignment="Center"/>
+						<ListBox Visibility="Collapsed" Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+
+					</Grid>
+				</GroupBox>
+			</Grid>
+
+			<Grid Grid.Column="1" Margin="10">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<GroupBox Grid.Row="0" Grid.Column="0" Header="Comands">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<StackPanel Grid.Column="0">
+							<Button Margin="7,5,3,5" Content="Load" Click="LoadButton_Click"/>
+							<Button Margin="5" Content="Start" Command="{Binding StartCommand}"/>
+						</StackPanel>
+
+						<Grid Grid.Column="1">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+
+							<Button x:Name="PauseButton" Margin="5" Grid.Row="0" Content="Pause" Command="{Binding PauseCommand}"/>
+
+							<Grid Grid.Row="1">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+
+								<Button Margin="5" Grid.Column="0" Content="Next" Command="{Binding NextCommand}"/>
+								<Button Margin="5" Grid.Column="1" Content="DT Interrup" Command="{Binding DTInterruptCommand}"/>
+							</Grid>
+						</Grid>
+					</Grid>
+				</GroupBox>
+
+				<GroupBox Grid.Row="1" Header="Execution">
+					<ListBox x:Name="InstructionsListBox" SelectionChanged="InstructionsListBox_SelectionChanged" ItemsSource="{Binding Instructions}" SelectedIndex="{Binding CurrentInstructionIndex}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="-1,0,1,0" ItemTemplate="{DynamicResource DataTemplate1}">
+						<ListBox.Resources>
+							<DataTemplate x:Key="DataTemplate1">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding Address}"/>
+									<TextBlock Text="   ||  "/>
+									<TextBlock Text="{Binding Instruction}"/>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.Resources>
+					</ListBox>
+				</GroupBox>
+			</Grid>
+		</Grid>
+	</DockPanel>
+
+</Window>
